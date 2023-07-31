@@ -4,4 +4,5 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
+      - run: chmod +x kadai4/gcd.sh
       - run: bash kadai4/gcd.sh 4 8 
