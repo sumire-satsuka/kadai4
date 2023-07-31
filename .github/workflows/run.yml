@@ -4,5 +4,8 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - run: chmod +x gcd.sh
-      - run: bash gcd.sh 4 8 
+      - run: bash gcd.sh 4 8
+
