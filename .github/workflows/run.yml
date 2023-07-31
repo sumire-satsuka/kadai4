@@ -4,4 +4,4 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
-      - run: bash gcd.sh 4 8 
+      - run: bash ./gcd.sh 4 8 
