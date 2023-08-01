@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# ERROR 関数
+ERROR_EXIT(){
+  echo "$1" >&2
+  rm -f /tmp/$$-*
+  exit 1
+}
+
 # 各テストを一つ一つスクリプトにする。
 # じゃないとexitで終わってしまう。
 # あるいはexit0 は最後につける
@@ -15,13 +22,15 @@
 
 
 # 1. 2と4を入力する && 2を出力したら成功 || 出力しなかったらエラー
-result=$(./gcd.sh 2 4)
-if [[ $result = 2 ]] ; then
-  echo "1 OK"
-else
-  echo "NG"
-  exit 1
-fi
+echo "2" > /tmp/$$-ans
+./gcd.sh 2 4 > /tmp/$$-result
+diff /tmp/$$-ans /tmp/$$-result || echo "エラー 1" > /tmp/$$-e
+# if [[ $result = 2 ]] ; then
+#   echo "1 OK"
+# else
+#   echo "NG"
+#   exit 1
+# fi
 
 # 2. 3を入力する || エラーメッセージが出なかったらエラー
 result=$(./gcd.sh 3)
