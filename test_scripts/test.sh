@@ -21,17 +21,10 @@ echo "2" > /tmp/$$-ans
 diff /tmp/$$-ans /tmp/$$-result || echo "エラー 1" > /tmp/$$-error.log
 
 # 2. 3を入力する || エラーメッセージが出なかったらエラー
-echo "Error: 引数は二つです。" > /tmp/$$-ans
+# echo "Error: 引数は二つです。" > /tmp/$$-ans
+echo "test Error: 引数は二つです。" > /tmp/$$-ans
 ./gcd.sh 3 > /tmp/$$-result
 diff /tmp/$$-ans /tmp/$$-result || echo "エラー 2" > /tmp/$$-error.log
-
-# result=$(./gcd.sh 3)
-# if [[ $result = "Error: 引数は二つです。" ]] ; then
-#   echo "2 OK"
-# else
-#   echo "NG"
-#   exit 1
-# fi
 
 # 3. 文字を入力する || エラーメッセージが出なかったらエラー
 result=$(./gcd.sh aaa bbb)
