@@ -55,9 +55,20 @@ echo "Error: 最大公約数を求めるのに、なんで負の数入れたの�
 diff /tmp/$$-ans /tmp/$$-result || echo "エラー6-2" > /tmp/$$-error.log
 
 # 7 先頭に0
+# 7-1 $1の先頭に0 
 echo "Error: ごめんなさい。先頭に０を入力するとなんだかうまくいかないんです。" > /tmp/$$-ans
-./gcd.sh -3 -4 > /tmp/$$-result
-diff /tmp/$$-ans /tmp/$$-result || echo "エラー7" > /tmp/$$-error.log
+./gcd.sh 03 4 > /tmp/$$-result
+diff /tmp/$$-ans /tmp/$$-result || echo "エラー7-1" > /tmp/$$-error.log
+
+# 7-2 $2の先頭に0 
+echo "Error: ごめんなさい。先頭に０を入力するとなんだかうまくいかないんです。" > /tmp/$$-ans
+./gcd.sh 3 04 > /tmp/$$-result
+diff /tmp/$$-ans /tmp/$$-result || echo "エラー7-2" > /tmp/$$-error.log
+
+# 7-3 $1, $2の先頭に0 
+echo "Error: ごめんなさい。先頭に０を入力するとなんだかうまくいかないんです。" > /tmp/$$-ans
+./gcd.sh 03 04 > /tmp/$$-result
+diff /tmp/$$-ans /tmp/$$-result || echo "エラー7-3" > /tmp/$$-error.log
 
 # 8 大きい数
 echo "20000" > /tmp/$$-ans
