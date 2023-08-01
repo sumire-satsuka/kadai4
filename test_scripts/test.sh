@@ -37,3 +37,39 @@ else
   echo "NG"
   exit 1
 fi
+
+# 引数の数が多い
+result=$(./gcd.sh 3 4 5 5)
+if [ $result = "Error: 引数は二つです。" ] ; then
+  exit 0
+else
+  echo "引数多すぎ"
+  exit 1
+fi
+
+# 数値が自然数
+result=$(./gcd.sh 3.4 4)
+if [ $result = "Error: 引数は二つです。" ] ; then
+  exit 0
+else
+  echo "Error: 最大公約数を求めるのに、なんで負の数入れたの？あなたが入れるべきは正の整数です。"
+  exit 1
+fi
+result=$(./gcd.sh 3.4 4.2)
+if [ $result = "Error: 引数は二つです。" ] ; then
+  exit 0
+else
+  echo  "Error: 最大公約数を求めるのに、なんで負の数入れたの？あなたが入れるべきは正の整数です。"
+  exit 1
+fi
+result=$(./gcd.sh 3 4.2)
+if [ $result = "Error: 引数は二つです。" ] ; then
+  exit 0
+else
+  echo  "Error: 最大公約数を求めるのに、なんで負の数入れたの？あなたが入れるべきは正の整数です。"
+  exit 1
+fi
+# 負の数
+# 小数
+# 先頭に0
+# 大きいなど
