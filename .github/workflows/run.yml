@@ -7,5 +7,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - run: chmod +x gcd.sh
-      - run: bash gcd.sh 4 8
+      - run: chmod +x test_scripts/test.sh
+      - run: bash test_scripts/test.sh
 
