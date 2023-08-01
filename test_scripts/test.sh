@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# ERROR 関数
-ERROR_EXIT(){
-  echo "$1" >&2
-  rm -f /tmp/$$-*
-  exit 1
-}
 
 # 各テストを一つ一つスクリプトにする。
 # じゃないとexitで終わってしまう。
@@ -24,7 +18,7 @@ ERROR_EXIT(){
 # 1. 2と4を入力する && 2を出力したら成功 || 出力しなかったらエラー
 echo "2" > /tmp/$$-ans
 ./gcd.sh 2 4 > /tmp/$$-result
-diff /tmp/$$-ans /tmp/$$-result || echo "エラー 1" > /tmp/$$-e
+diff /tmp/$$-ans /tmp/$$-result || echo "エラー 1" > /tmp/$$-error.log
 # if [[ $result = 2 ]] ; then
 #   echo "1 OK"
 # else
@@ -107,5 +101,11 @@ fi
 # 小数
 # 先頭に0
 # 大きいなど
+
+if [ -f /tmp/$$-error.log ] ; then
+  cat /tmp/$$-error.log 1>&2
+  rm -f /tmp/$$-*
+  exit 1
+fi
 
 exit 0
