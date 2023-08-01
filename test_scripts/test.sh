@@ -24,7 +24,7 @@ fi
 
 # 3を入力する || エラーメッセージが出なかったらエラー
 result=$(./gcd.sh 3)
-if [ $result = "Error: 引数は二つです。" ] ; then
+if [[ $result = "Error: 引数は二つです。" ]] ; then
   echo "OK"
 else
   echo "NG"
