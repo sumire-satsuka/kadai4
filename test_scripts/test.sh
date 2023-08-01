@@ -54,7 +54,7 @@ result=$(./gcd.sh 3.4 4)
 if [[ $result = "Error: 小数点とか入力してはダメです。だって自然数だから。" ]] ; then
   echo "5-1 OK"
 else
-  echo "5-1 Error: 最大公約数を求めるのに、なんで負の数入れたの？あなたが入れるべきは正の整数です。"
+  echo "5-1 Error: 小数点とか入力してはダメです。だって自然数だから。"
   exit 1
 fi
 result=$(./gcd.sh 3.4 4.2)
