@@ -19,21 +19,19 @@
 echo "2" > /tmp/$$-ans
 ./gcd.sh 2 4 > /tmp/$$-result
 diff /tmp/$$-ans /tmp/$$-result || echo "エラー 1" > /tmp/$$-error.log
-# if [[ $result = 2 ]] ; then
-#   echo "1 OK"
+
+# 2. 3を入力する || エラーメッセージが出なかったらエラー
+echo "Error: 引数は二つです。" > /tmp/$$-ans
+./gcd.sh 3 > /tmp/$$-result
+diff /tmp/$$-ans /tmp/$$-result || echo "エラー 2" > /tmp/$$-error.log
+
+# result=$(./gcd.sh 3)
+# if [[ $result = "Error: 引数は二つです。" ]] ; then
+#   echo "2 OK"
 # else
 #   echo "NG"
 #   exit 1
 # fi
-
-# 2. 3を入力する || エラーメッセージが出なかったらエラー
-result=$(./gcd.sh 3)
-if [[ $result = "Error: 引数は二つです。" ]] ; then
-  echo "2 OK"
-else
-  echo "NG"
-  exit 1
-fi
 
 # 3. 文字を入力する || エラーメッセージが出なかったらエラー
 result=$(./gcd.sh aaa bbb)
