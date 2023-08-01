@@ -54,13 +54,16 @@ diff /tmp/$$-ans /tmp/$$-result || echo "エラー5-2" > /tmp/$$-error.log
 
 
 # 6. 負の数
-result=$(./gcd.sh -3 4)
-if [[ $result = "Error: 最大公約数を求めるのに、なんで負の数入れたの？あなたが入れるべきは正の整数です。" ]] ; then
-  echo "6-1 OK"
-else
-  echo "Error: 最大公約数を求めるのに、なんで負の数入れたの？あなたが入れるべきは正の整数です。"
-  exit 1
-fi
+## 6-1 $1が負の数
+echo "Error: 最大公約数を求めるのに、なんで負の数入れたの？あなたが入れるべきは正の整数です。" > /tmp/$$-ans
+./gcd.sh -3 4 > /tmp/$$-result
+diff /tmp/$$-ans /tmp/$$-result || echo "エラー6-1" > /tmp/$$-error.log
+
+## 6-2 $2が負の数
+echo "Error: 最大公約数を求めるのに、なんで負の数入れたの？あなたが入れるべきは正の整数です。" > /tmp/$$-ans
+./gcd.sh 3 -4 > /tmp/$$-result
+diff /tmp/$$-ans /tmp/$$-result || echo "エラー6-2" > /tmp/$$-error.log
+
 result=$(./gcd.sh 3 -4)
 if [[ $result = "Error: 最大公約数を求めるのに、なんで負の数入れたの？あなたが入れるべきは正の整数です。" ]] ; then
   echo "6-2 OK"
@@ -68,14 +71,11 @@ else
   echo  "Error: 最大公約数を求めるのに、なんで負の数入れたの？あなたが入れるべきは正の整数です。"
   exit 1
 fi
-result=$(./gcd.sh -3 -4)
-if [[ $result = "Error: 最大公約数を求めるのに、なんで負の数入れたの？あなたが入れるべきは正の整数です。" ]] ; then
-  echo "6-3 OK"
-else
-  echo  "Error: 最大公約数を求めるのに、なんで負の数入れたの？あなたが入れるべきは正の整数です。"
-  exit 1
-fi
-# 小数
+## 6-3 $1 $2が負の数
+echo "Error: 最大公約数を求めるのに、なんで負の数入れたの？あなたが入れるべきは正の整数です。" > /tmp/$$-ans
+./gcd.sh -3 -4 > /tmp/$$-result
+diff /tmp/$$-ans /tmp/$$-result || echo "エラー6-2" > /tmp/$$-error.log
+
 # 先頭に0
 # 大きいなど
 
