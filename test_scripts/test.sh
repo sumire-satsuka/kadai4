@@ -43,22 +43,15 @@ diff /tmp/$$-ans /tmp/$$-result || echo "エラー 5-1" > /tmp/$$-error.log
 
 
 ## 5-2 $1 $2 が小数点を含む
-result=$(./gcd.sh 3.4 4.2)
-if [[ $result = "Error: 小数点とか入力してはダメです。だって自然数だから。" ]] ; then
-  echo "5-2 OK"
-else
-  echo "5-2 Error: 最大公約数を求めるのに、なんで負の数入れたの？あなたが入れるべきは正の整数です。"
-  exit 1
-fi
+echo "Error: 小数点とか入力してはダメです。だって自然数だから。" > /tmp/$$-ans
+./gcd.sh 3.4 4.2 > /tmp/$$-result
+diff /tmp/$$-ans /tmp/$$-result || echo "エラー5-2" > /tmp/$$-error.log
 
 ## 5-3 $2 が小数点を含む
-result=$(./gcd.sh 3 4.2)
-if [[ $result = "Error: 小数点とか入力してはダメです。だって自然数だから。" ]] ; then
-  echo "5-3 OK"
-else
-  echo  "5-3 Error: 最大公約数を求めるのに、なんで負の数入れたの？あなたが入れるべきは正の整数です。"
-  exit 1
-fi
+echo "Error: 小数点とか入力してはダメです。だって自然数だから。" > /tmp/$$-ans
+./gcd.sh 3 4.2 > /tmp/$$-result
+diff /tmp/$$-ans /tmp/$$-result || echo "エラー5-2" > /tmp/$$-error.log
+
 
 # 6. 負の数
 result=$(./gcd.sh -3 4)
