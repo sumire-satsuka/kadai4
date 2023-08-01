@@ -36,13 +36,13 @@ echo "Error: 引数は二つです。" > /tmp/$$-ans
 diff /tmp/$$-ans /tmp/$$-result || echo "エラー 4" > /tmp/$$-error.log
 
 # 5. 数値が小数点を含む
-result=$(./gcd.sh 3.4 4)
-if [[ $result = "Error: 小数点とか入力してはダメです。だって自然数だから。" ]] ; then
-  echo "5-1 OK"
-else
-  echo "5-1 Error: 小数点とか入力してはダメです。だって自然数だから。"
-  exit 1
-fi
+## 5-1 $1 が小数点を含む
+echo "Error: 小数点とか入力してはダメです。だって自然数だから。" > /tmp/$$-ans
+./gcd.sh 3.4 4 > /tmp/$$-result
+diff /tmp/$$-ans /tmp/$$-result || echo "エラー 5-1" > /tmp/$$-error.log
+
+
+## 5-2 $1 $2 が小数点を含む
 result=$(./gcd.sh 3.4 4.2)
 if [[ $result = "Error: 小数点とか入力してはダメです。だって自然数だから。" ]] ; then
   echo "5-2 OK"
@@ -50,6 +50,8 @@ else
   echo "5-2 Error: 最大公約数を求めるのに、なんで負の数入れたの？あなたが入れるべきは正の整数です。"
   exit 1
 fi
+
+## 5-3 $2 が小数点を含む
 result=$(./gcd.sh 3 4.2)
 if [[ $result = "Error: 小数点とか入力してはダメです。だって自然数だから。" ]] ; then
   echo "5-3 OK"
