@@ -31,13 +31,9 @@ echo "Error: 10進数の自然数を入れてね！" > /tmp/$$-ans
 diff /tmp/$$-ans /tmp/$$-result || echo "エラー 3" > /tmp/$$-error.log
 
 # 4. 引数の数が多い
-result=$(./gcd.sh 3 4 5 5)
-if [[ $result = "Error: 引数は二つです。" ]] ; then
-  echo "4 OK"
-else
-  echo "引数多すぎ"
-  exit 1
-fi
+echo "Error: 引数は二つです。" > /tmp/$$-ans
+./gcd.sh 3 4 5 6 > /tmp/$$-result
+diff /tmp/$$-ans /tmp/$$-result || echo "エラー 4" > /tmp/$$-error.log
 
 # 5. 数値が小数点を含む
 result=$(./gcd.sh 3.4 4)
