@@ -15,7 +15,7 @@
 
 # 1. 2と4を入力する && 2を出力したら成功 || 出力しなかったらエラー
 result=$(./gcd.sh 2 4)
-if [ $result = 2 ] ; then
+if [[ $result = 2 ]] ; then
   echo "1 OK"
 else
   echo "NG"
