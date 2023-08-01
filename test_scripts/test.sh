@@ -21,19 +21,14 @@ echo "2" > /tmp/$$-ans
 diff /tmp/$$-ans /tmp/$$-result || echo "エラー 1" > /tmp/$$-error.log
 
 # 2. 3を入力する || エラーメッセージが出なかったらエラー
-# echo "Error: 引数は二つです。" > /tmp/$$-ans
-echo "test Error: 引数は二つです。" > /tmp/$$-ans
+echo "Error: 引数は二つです。" > /tmp/$$-ans
 ./gcd.sh 3 > /tmp/$$-result
 diff /tmp/$$-ans /tmp/$$-result || echo "エラー 2" > /tmp/$$-error.log
 
 # 3. 文字を入力する || エラーメッセージが出なかったらエラー
-result=$(./gcd.sh aaa bbb)
-if [[ $result = "Error: 10進数の自然数を入れてね！" ]] ; then
-  echo "3 OK"
-else
-  echo "NG"
-  exit 1
-fi
+echo "Error: 10進数の自然数を入れてね！" > /tmp/$$-ans
+./gcd.sh aaa bbb > /tmp/$$-result
+diff /tmp/$$-ans /tmp/$$-result || echo "エラー 3" > /tmp/$$-error.log
 
 # 4. 引数の数が多い
 result=$(./gcd.sh 3 4 5 5)
